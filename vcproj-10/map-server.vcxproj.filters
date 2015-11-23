@@ -202,6 +202,7 @@
     <ClCompile Include="..\src\common\mutex.c">
       <Filter>common</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\map\channel.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\map\atcommand.h">
@@ -431,6 +432,7 @@
     <ClInclude Include="..\src\common\mutex.h">
       <Filter>common</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\map\channel.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="common">

@@ -75,6 +75,7 @@
     <ClInclude Include="..\src\common\nullpo.h">
       <Filter>common</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\config\renewal.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="common">
