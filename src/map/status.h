@@ -747,6 +747,35 @@ typedef enum sc_type {
 	SC_MERMAID_LONGING,
 	
 	SC_ACARAJE, // 590
+	SC_TARGET_ASPD,
+	
+	// Geffen Scrolls
+	SC_SKELSCROLL,
+	SC_DISTRUCTIONSCROLL,
+	SC_ROYALSCROLL,
+	SC_IMMUNITYSCROLL,
+	SC_MYSTICSCROLL,
+	SC_BATTLESCROLL,
+	SC_ARMORSCROLL,
+	SC_FREYJASCROLL,
+	SC_SOULSCROLL, // 600
+	
+	// Eden Crystal Synthesis
+	SC_QUEST_BUFF1,
+	SC_QUEST_BUFF2,
+	SC_QUEST_BUFF3,
+	
+	// Geffen Magic Tournament
+	SC_GEFFEN_MAGIC1,
+	SC_GEFFEN_MAGIC2,
+	SC_GEFFEN_MAGIC3,
+	SC_FENRIR_CARD,
+	
+	SC_ATKER_ASPD,
+	SC_ATKER_MOVESPEED,
+	
+	SC_FOOD_CRITICALSUCCESSVALUE, // 610
+	SC_CUP_OF_BOZA,
 
 	SC_MAX, //Automatically updated max, used in for's to check we are within bounds.
 } sc_type;
@@ -1057,9 +1086,9 @@ enum si_type {
 	SI_L_LIFEPOTION                          = 294,
 	SI_CRITICALPERCENT                       = 295,
 	SI_PLUSAVOIDVALUE                        = 296,
-	//SI_ATKER_ASPD                          = 297,
-	//SI_TARGET_ASPD                         = 298,
-	//SI_ATKER_MOVESPEED                     = 299,
+	SI_ATKER_ASPD                            = 297,
+	SI_TARGET_ASPD                           = 298,
+	SI_ATKER_MOVESPEED                       = 299,
 
 	SI_ATKER_BLOOD                           = 300,
 	SI_TARGET_BLOOD                          = 301,
@@ -1512,7 +1541,7 @@ enum si_type {
 	//SI_JITTER_BUFF8                          = 748,
 	//SI_JITTER_BUFF9                          = 749,
 	//SI_JITTER_BUFF10                         = 750,
-	//SI_CUP_OF_BOZA                           = 751,
+	SI_CUP_OF_BOZA                           = 751,
 	SI_B_TRAP                                = 752,
 	SI_E_CHAIN                               = 753,
 	SI_E_QD_SHOT_READY                       = 754,

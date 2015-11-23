@@ -802,6 +802,7 @@ void initChangeTables(void) {
 	status->dbs->IconChangeTable[SC_SPL_MATK] = SI_SPL_MATK;
 	status->dbs->IconChangeTable[SC_PLUSATTACKPOWER] = SI_PLUSATTACKPOWER;
 	status->dbs->IconChangeTable[SC_PLUSMAGICPOWER] = SI_PLUSMAGICPOWER;
+	status->dbs->IconChangeTable[SC_FOOD_CRITICALSUCCESSVALUE] = SI_FOOD_CRITICALSUCCESSVALUE;
 
 	// Cash Items
 	status->dbs->IconChangeTable[SC_FOOD_STR_CASH] = SI_FOOD_STR_CASH;
@@ -825,6 +826,21 @@ void initChangeTables(void) {
 	status->dbs->IconChangeTable[SC_ATKER_BLOOD] = SI_ATKER_BLOOD;
 	status->dbs->IconChangeTable[SC_TARGET_BLOOD] = SI_TARGET_BLOOD;
 	status->dbs->IconChangeTable[SC_ACARAJE] = SI_ACARAJE;
+	status->dbs->IconChangeTable[SC_TARGET_ASPD] = SI_TARGET_ASPD;
+	status->dbs->IconChangeTable[SC_ATKER_ASPD] = SI_ATKER_ASPD;
+	status->dbs->IconChangeTable[SC_ATKER_MOVESPEED] = SI_ATKER_MOVESPEED;
+	status->dbs->IconChangeTable[SC_CUP_OF_BOZA] = SI_CUP_OF_BOZA;
+	
+	// Eden Crystal Synthesis
+	status->dbs->IconChangeTable[SC_QUEST_BUFF1] = SI_QUEST_BUFF1;
+	status->dbs->IconChangeTable[SC_QUEST_BUFF2] = SI_QUEST_BUFF2;
+	status->dbs->IconChangeTable[SC_QUEST_BUFF3] = SI_QUEST_BUFF3;
+	
+	// Geffen Magic Tournament
+	status->dbs->IconChangeTable[SC_GEFFEN_MAGIC1] = SI_GEFFEN_MAGIC1;
+	status->dbs->IconChangeTable[SC_GEFFEN_MAGIC2] = SI_GEFFEN_MAGIC2;
+	status->dbs->IconChangeTable[SC_GEFFEN_MAGIC3] = SI_GEFFEN_MAGIC3;
+	status->dbs->IconChangeTable[SC_FENRIR_CARD] = SI_FENRIR_CARD;
 	
 	// Mercenary Bonus Effects
 	status->dbs->IconChangeTable[SC_MER_FLEE] = SI_MER_FLEE;
@@ -976,6 +992,11 @@ void initChangeTables(void) {
 	status->dbs->ChangeFlagTable[SC_WALKSPEED] |= SCB_SPEED;
 	status->dbs->ChangeFlagTable[SC_ITEMSCRIPT] |= SCB_ALL;
 	status->dbs->ChangeFlagTable[SC_TARGET_BLOOD] |= SCB_ALL;
+	status->dbs->ChangeFlagTable[SC_TARGET_ASPD] |= SCB_MAXSP;
+	status->dbs->ChangeFlagTable[SC_ATKER_ASPD] |= SCB_MAXHP | SCB_ALL;
+	status->dbs->ChangeFlagTable[SC_ATKER_MOVESPEED] |= SCB_MAXSP | SCB_ALL;
+	status->dbs->ChangeFlagTable[SC_FOOD_CRITICALSUCCESSVALUE] |= SCB_CRI;
+	status->dbs->ChangeFlagTable[SC_CUP_OF_BOZA] |= SCB_VIT | SCB_ALL;
 	
 	// Cash Items
 	status->dbs->ChangeFlagTable[SC_FOOD_STR_CASH] = SCB_STR;
@@ -1021,19 +1042,43 @@ void initChangeTables(void) {
 	status->dbs->ChangeFlagTable[SC_EXTRACT_WHITE_POTION_Z] |= SCB_REGEN;
 	status->dbs->ChangeFlagTable[SC_VITATA_500] |= SCB_REGEN | SCB_MAXSP;
 	status->dbs->ChangeFlagTable[SC_EXTRACT_SALAMINE_JUICE] |= SCB_ASPD;
-	status->dbs->ChangeFlagTable[SC_REBOUND] |= SCB_SPEED|SCB_REGEN;
-	status->dbs->ChangeFlagTable[SC_DEFSET] |= SCB_DEF|SCB_DEF2;
-	status->dbs->ChangeFlagTable[SC_MDEFSET] |= SCB_MDEF|SCB_MDEF2;
+	status->dbs->ChangeFlagTable[SC_REBOUND] |= SCB_SPEED | SCB_REGEN;
+	status->dbs->ChangeFlagTable[SC_DEFSET] |= SCB_DEF | SCB_DEF2;
+	status->dbs->ChangeFlagTable[SC_MDEFSET] |= SCB_MDEF | SCB_MDEF2;
 	status->dbs->ChangeFlagTable[SC_MYSTERIOUS_POWDER] |= SCB_MAXHP;
 	status->dbs->ChangeFlagTable[SC_ACARAJE] |= SCB_HIT | SCB_ASPD;
+	status->dbs->ChangeFlagTable[SC_STOMACHACHE] |= SCB_STR | SCB_AGI | SCB_VIT | SCB_INT | SCB_DEX | SCB_LUK | SCB_SPEED;
+	
+	// Geffen Scrolls
+	status->dbs->ChangeFlagTable[SC_SKELSCROLL] |= SCB_ALL;
+	status->dbs->ChangeFlagTable[SC_DISTRUCTIONSCROLL] |= SCB_ALL;
+	status->dbs->ChangeFlagTable[SC_ROYALSCROLL] |= SCB_ALL;
+	status->dbs->ChangeFlagTable[SC_IMMUNITYSCROLL] |= SCB_ALL;
+	status->dbs->ChangeFlagTable[SC_MYSTICSCROLL] |= SCB_MATK;
+	status->dbs->ChangeFlagTable[SC_BATTLESCROLL] |= SCB_BATK | SCB_ASPD;
+	status->dbs->ChangeFlagTable[SC_ARMORSCROLL] |= SCB_DEF | SCB_FLEE;
+	status->dbs->ChangeFlagTable[SC_FREYJASCROLL] |= SCB_MDEF | SCB_FLEE2;
+	status->dbs->ChangeFlagTable[SC_SOULSCROLL] |= SCB_MAXHP | SCB_MAXSP;
 
 	status->dbs->ChangeFlagTable[SC_ALL_RIDING] = SCB_SPEED;
 	status->dbs->ChangeFlagTable[SC_WEDDING] = SCB_SPEED;
 
-	status->dbs->ChangeFlagTable[SC_MTF_ASPD] = SCB_ASPD|SCB_HIT;
+	status->dbs->ChangeFlagTable[SC_MTF_ASPD] = SCB_ASPD | SCB_HIT;
 	status->dbs->ChangeFlagTable[SC_MTF_MATK] = SCB_MATK;
 	status->dbs->ChangeFlagTable[SC_MTF_MLEATKED] |= SCB_ALL;
-
+	
+	// Eden Crystal Synthesis
+	status->dbs->ChangeFlagTable[SC_QUEST_BUFF1] |= SCB_BATK | SCB_MATK;
+	status->dbs->ChangeFlagTable[SC_QUEST_BUFF2] |= SCB_BATK | SCB_MATK;
+	status->dbs->ChangeFlagTable[SC_QUEST_BUFF3] |= SCB_BATK | SCB_MATK;
+	
+	// Geffen Magic Tournament
+	status->dbs->ChangeFlagTable[SC_GEFFEN_MAGIC1] |= SCB_ALL;
+	status->dbs->ChangeFlagTable[SC_GEFFEN_MAGIC2] |= SCB_ALL;
+	status->dbs->ChangeFlagTable[SC_GEFFEN_MAGIC3] |= SCB_ALL;
+	status->dbs->ChangeFlagTable[SC_FENRIR_CARD] |= SCB_MATK | SCB_ALL;
+	
+	// Costume
 	status->dbs->ChangeFlagTable[SC_MOONSTAR] |= SCB_NONE;
 	status->dbs->ChangeFlagTable[SC_SUPER_STAR] |= SCB_NONE;
 	status->dbs->ChangeFlagTable[SC_STRANGELIGHTS] |= SCB_NONE;
@@ -2848,33 +2893,33 @@ int status_calc_pc_(struct map_session_data* sd, enum e_status_calc_opt opt) {
 		sd->sprecov_rate = 0;
 
 	// Anti-element and anti-race
-	if((skill_lv=pc->checkskill(sd,CR_TRUST))>0)
-		sd->subele[ELE_HOLY] += skill_lv*5;
-	if((skill_lv=pc->checkskill(sd,BS_SKINTEMPER))>0) {
+	if ((skill_lv = pc->checkskill(sd, CR_TRUST)) > 0)
+		sd->subele[ELE_HOLY] += skill_lv * 5;
+	if ((skill_lv = pc->checkskill(sd, BS_SKINTEMPER)) > 0) {
 		sd->subele[ELE_NEUTRAL] += skill_lv;
 		sd->subele[ELE_FIRE] += skill_lv*4;
 	}
-	if((skill_lv=pc->checkskill(sd,NC_RESEARCHFE))>0) {
-		sd->subele[ELE_EARTH] += skill_lv*10;
-		sd->subele[ELE_FIRE] += skill_lv*10;
+	if ((skill_lv = pc->checkskill(sd, NC_RESEARCHFE)) > 0) {
+		sd->subele[ELE_EARTH] += skill_lv * 10;
+		sd->subele[ELE_FIRE] += skill_lv * 10;
 	}
-	if((skill_lv=pc->checkskill(sd,SA_DRAGONOLOGY))>0 ) {
+	if ((skill_lv = pc->checkskill(sd, SA_DRAGONOLOGY)) > 0) {
 #ifdef RENEWAL
-		skill_lv = skill_lv*2;
+		skill_lv = skill_lv * 2;
 #else
-		skill_lv = skill_lv*4;
+		skill_lv = skill_lv * 4;
 #endif
-		sd->right_weapon.addrace[RC_DRAGON]+=skill_lv;
-		sd->left_weapon.addrace[RC_DRAGON]+=skill_lv;
-		sd->magic_addrace[RC_DRAGON]+=skill_lv;
+		sd->right_weapon.addrace[RC_DRAGON] += skill_lv;
+		sd->left_weapon.addrace[RC_DRAGON] += skill_lv;
+		sd->magic_addrace[RC_DRAGON] += skill_lv;
 #ifdef RENEWAL
 		sd->race_tolerance[RC_DRAGON] += skill_lv;
 #else
-		sd->subrace[RC_DRAGON]+=skill_lv;
+		sd->subrace[RC_DRAGON] += skill_lv;
 #endif
 	}
 
-	if( (skill_lv = pc->checkskill(sd, AB_EUCHARISTICA)) > 0 ) {
+	if ((skill_lv = pc->checkskill(sd, AB_EUCHARISTICA)) > 0) {
 		sd->right_weapon.addrace[RC_DEMON] += skill_lv;
 		sd->right_weapon.addele[ELE_DARK] += skill_lv;
 		sd->left_weapon.addrace[RC_DEMON] += skill_lv;
@@ -2889,12 +2934,12 @@ int status_calc_pc_(struct map_session_data* sd, enum e_status_calc_opt opt) {
 		sd->subele[ELE_DARK] += skill_lv;
 	}
 
-	if(sc->count) {
-		if(sc->data[SC_CONCENTRATION]) { //Update the card-bonus data
-			sc->data[SC_CONCENTRATION]->val3 = sd->param_bonus[1]; //Agi
-			sc->data[SC_CONCENTRATION]->val4 = sd->param_bonus[4]; //Dex
+	if (sc->count) {
+		if (sc->data[SC_CONCENTRATION]) { // Update the card-bonus data
+			sc->data[SC_CONCENTRATION]->val3 = sd->param_bonus[1]; // Agi
+			sc->data[SC_CONCENTRATION]->val4 = sd->param_bonus[4]; // Dex
 		}
-		if(sc->data[SC_SIEGFRIED]){
+		if (sc->data[SC_SIEGFRIED]){
 			i = sc->data[SC_SIEGFRIED]->val2;
 			sd->subele[ELE_WATER] += i;
 			sd->subele[ELE_EARTH] += i;
@@ -2906,7 +2951,7 @@ int status_calc_pc_(struct map_session_data* sd, enum e_status_calc_opt opt) {
 			sd->subele[ELE_GHOST] += i;
 			sd->subele[ELE_UNDEAD] += i;
 		}
-		if(sc->data[SC_PROVIDENCE]){
+		if (sc->data[SC_PROVIDENCE]){
 			sd->subele[ELE_HOLY] += sc->data[SC_PROVIDENCE]->val2;
 #ifdef RENEWAL
 			sd->race_tolerance[RC_DEMON] += sc->data[SC_PROVIDENCE]->val2;
@@ -2914,49 +2959,92 @@ int status_calc_pc_(struct map_session_data* sd, enum e_status_calc_opt opt) {
 			sd->subrace[RC_DEMON] += sc->data[SC_PROVIDENCE]->val2;
 #endif
 		}
-		if(sc->data[SC_ARMORPROPERTY]) {
+		if (sc->data[SC_ARMORPROPERTY]) {
 			//This status change should grant card-type elemental resist.
 			sd->subele[ELE_WATER] += sc->data[SC_ARMORPROPERTY]->val1;
 			sd->subele[ELE_EARTH] += sc->data[SC_ARMORPROPERTY]->val2;
 			sd->subele[ELE_FIRE] += sc->data[SC_ARMORPROPERTY]->val3;
 			sd->subele[ELE_WIND] += sc->data[SC_ARMORPROPERTY]->val4;
 		}
-		if(sc->data[SC_ARMOR_RESIST]) { // Undead Scroll
+		if (sc->data[SC_ARMOR_RESIST]) { // Undead Scroll
 			sd->subele[ELE_WATER] += sc->data[SC_ARMOR_RESIST]->val1;
 			sd->subele[ELE_EARTH] += sc->data[SC_ARMOR_RESIST]->val2;
 			sd->subele[ELE_FIRE] += sc->data[SC_ARMOR_RESIST]->val3;
 			sd->subele[ELE_WIND] += sc->data[SC_ARMOR_RESIST]->val4;
 		}
-		if( sc->data[SC_FIRE_CLOAK_OPTION] ) {
+		if (sc->data[SC_FIRE_CLOAK_OPTION]) {
 			i = sc->data[SC_FIRE_CLOAK_OPTION]->val2;
 			sd->subele[ELE_FIRE] += i;
 			sd->subele[ELE_WATER] -= i;
 		}
-		if( sc->data[SC_WATER_DROP_OPTION] ) {
+		if (sc->data[SC_WATER_DROP_OPTION]) {
 			i = sc->data[SC_WATER_DROP_OPTION]->val2;
 			sd->subele[ELE_WATER] += i;
 			sd->subele[ELE_WIND] -= i;
 		}
-		if( sc->data[SC_WIND_CURTAIN_OPTION] ) {
+		if (sc->data[SC_WIND_CURTAIN_OPTION]) {
 			i = sc->data[SC_WIND_CURTAIN_OPTION]->val2;
 			sd->subele[ELE_WIND] += i;
 			sd->subele[ELE_EARTH] -= i;
 		}
-		if( sc->data[SC_STONE_SHIELD_OPTION] ) {
+		if (sc->data[SC_STONE_SHIELD_OPTION]) {
 			i = sc->data[SC_STONE_SHIELD_OPTION]->val2;
 			sd->subele[ELE_EARTH] += i;
 			sd->subele[ELE_FIRE] -= i;
 		}
-		if( sc->data[SC_MTF_MLEATKED] )
+		if (sc->data[SC_MTF_MLEATKED])
 			sd->subele[ELE_NEUTRAL] += 2;
-		if( sc->data[SC_FIRE_INSIGNIA] && sc->data[SC_FIRE_INSIGNIA]->val1 == 3 )
+		if (sc->data[SC_FIRE_INSIGNIA] && sc->data[SC_FIRE_INSIGNIA]->val1 == 3)
 			sd->magic_addele[ELE_FIRE] += 25;
-		if( sc->data[SC_WATER_INSIGNIA] && sc->data[SC_WATER_INSIGNIA]->val1 == 3 )
+		if (sc->data[SC_WATER_INSIGNIA] && sc->data[SC_WATER_INSIGNIA]->val1 == 3)
 			sd->magic_addele[ELE_WATER] += 25;
-		if( sc->data[SC_WIND_INSIGNIA] && sc->data[SC_WIND_INSIGNIA]->val1 == 3 )
+		if (sc->data[SC_WIND_INSIGNIA] && sc->data[SC_WIND_INSIGNIA]->val1 == 3)
 			sd->magic_addele[ELE_WIND] += 25;
-		if( sc->data[SC_EARTH_INSIGNIA] && sc->data[SC_EARTH_INSIGNIA]->val1 == 3 )
+		if (sc->data[SC_EARTH_INSIGNIA] && sc->data[SC_EARTH_INSIGNIA]->val1 == 3)
 			sd->magic_addele[ELE_EARTH] += 25;
+			
+		// Geffen Scrolls
+		if (sc->data[SC_SKELSCROLL]) {
+#ifdef RENEWAL
+			sd->race_tolerance[RC_DEMIHUMAN] += sc->data[SC_SKELSCROLL]->val1;
+#else
+			sd->subrace[RC_DEMIHUMAN] += sc->data[SC_SKELSCROLL]->val1;
+#endif
+		}
+		if (sc->data[SC_DISTRUCTIONSCROLL]) {
+			sd->right_weapon.addrace[RC_ANGEL] += sc->data[SC_DISTRUCTIONSCROLL]->val1;
+			sd->left_weapon.addrace[RC_ANGEL] += sc->data[SC_DISTRUCTIONSCROLL]->val1;
+			sd->right_weapon.addele[ELE_HOLY] += sc->data[SC_DISTRUCTIONSCROLL]->val1;
+			sd->left_weapon.addele[ELE_HOLY] += sc->data[SC_DISTRUCTIONSCROLL]->val1;
+			sd->right_weapon.addrace[RC_BOSS] += sc->data[SC_DISTRUCTIONSCROLL]->val1;
+			sd->left_weapon.addrace[RC_BOSS] += sc->data[SC_DISTRUCTIONSCROLL]->val1;
+		}
+		if (sc->data[SC_ROYALSCROLL]) {
+#ifdef RENEWAL
+			sd->race_tolerance[RC_BOSS] += sc->data[SC_ROYALSCROLL]->val1;
+#else
+			sd->subrace[RC_BOSS] += sc->data[SC_ROYALSCROLL]->val1;
+#endif
+		}
+		if (sc->data[SC_IMMUNITYSCROLL])
+			sd->subele[ELE_NEUTRAL] += sc->data[SC_IMMUNITYSCROLL]->val1;
+		
+		// Geffen Magic Tournament
+		if (sc->data[SC_GEFFEN_MAGIC1]) {
+			sd->right_weapon.addrace[RC_DEMIHUMAN] += sc->data[SC_GEFFEN_MAGIC1]->val1;
+			sd->left_weapon.addrace[RC_DEMIHUMAN] += sc->data[SC_GEFFEN_MAGIC1]->val1;	
+		}
+		if (sc->data[SC_GEFFEN_MAGIC2])
+			sd->magic_addrace[RC_DEMIHUMAN] += sc->data[SC_GEFFEN_MAGIC2]->val1;
+		if (sc->data[SC_GEFFEN_MAGIC3]) {
+#ifdef RENEWAL
+			sd->race_tolerance[RC_DEMIHUMAN] += sc->data[SC_GEFFEN_MAGIC3]->val1;
+#else
+			sd->subrace[RC_DEMIHUMAN] += sc->data[SC_GEFFEN_MAGIC3]->val1;
+#endif
+		}
+		if (sc->data[SC_CUP_OF_BOZA])
+			sd->subele[ELE_FIRE] += sc->data[SC_CUP_OF_BOZA]->val2;
 	}
 	status_cpy(&sd->battle_status, bstatus);
 
@@ -3328,7 +3416,7 @@ void status_calc_regen_rate(struct block_list *bl, struct regen_data *regen, str
 		} else
 			regen->flag&=~sce->val4; //Remove regen as specified by val4
 	}
-	if(sc->data[SC_GENTLETOUCH_REVITALIZE]) {
+	if (sc->data[SC_GENTLETOUCH_REVITALIZE]) {
 		regen->hp += regen->hp * ( 30 * sc->data[SC_GENTLETOUCH_REVITALIZE]->val1 + 50 ) / 100;
 	}
 	if ((sc->data[SC_FIRE_INSIGNIA] && sc->data[SC_FIRE_INSIGNIA]->val1 == 1) //if insignia lvl 1
@@ -3336,12 +3424,16 @@ void status_calc_regen_rate(struct block_list *bl, struct regen_data *regen, str
 		|| (sc->data[SC_EARTH_INSIGNIA] && sc->data[SC_EARTH_INSIGNIA]->val1 == 1)
 		|| (sc->data[SC_WIND_INSIGNIA] && sc->data[SC_WIND_INSIGNIA]->val1 == 1))
 		regen->rate.hp *= 2;
-	if( sc->data[SC_VITALITYACTIVATION] )
+	if (sc->data[SC_VITALITYACTIVATION])
 		regen->flag &=~RGN_SP;
-	if(sc->data[SC_EXTRACT_WHITE_POTION_Z])
-		regen->rate.hp += regen->rate.hp * sc->data[SC_EXTRACT_WHITE_POTION_Z]->val1/100;
+	if (sc->data[SC_EXTRACT_WHITE_POTION_Z])
+		regen->rate.hp += regen->rate.hp * sc->data[SC_EXTRACT_WHITE_POTION_Z]->val1 / 100;
 	if (sc->data[SC_VITATA_500])
 		regen->rate.sp += regen->rate.sp * sc->data[SC_VITATA_500]->val1 / 100;
+	if (sc->data[SC_ATKER_ASPD])
+		regen->rate.hp += regen->rate.hp * sc->data[SC_ATKER_ASPD]->val2 / 100;
+	if (sc->data[SC_ATKER_MOVESPEED])
+		regen->rate.sp += regen->rate.sp * sc->data[SC_ATKER_MOVESPEED]->val2 / 100;
 }
 /// Recalculates parts of an object's battle status according to the specified flags.
 /// @param flag bitfield of values from enum scb_flag
@@ -4299,9 +4391,10 @@ unsigned short status_calc_vit(struct block_list *bl, struct status_change *sc, 
 		vit -= sc->data[SC_STOMACHACHE]->val1;
 	if(sc->data[SC_KYOUGAKU])
 		vit -= sc->data[SC_KYOUGAKU]->val3;
-
 	if(sc->data[SC_NOEQUIPARMOR])
-		vit -= vit * sc->data[SC_NOEQUIPARMOR]->val2/100;
+		vit -= vit * sc->data[SC_NOEQUIPARMOR]->val2 / 100;
+	if (sc->data[SC_CUP_OF_BOZA])
+		vit += sc->data[SC_CUP_OF_BOZA]->val1;
 
 	return (unsigned short)cap_value(vit,0,USHRT_MAX);
 }
@@ -4549,6 +4642,14 @@ unsigned short status_calc_batk(struct block_list *bl, struct status_change *sc,
 		batk -= batk * sc->data[SC__ENERVATION]->val2 / 100;
 	if(sc->data[SC_SATURDAY_NIGHT_FEVER])
 		batk += 100 * sc->data[SC_SATURDAY_NIGHT_FEVER]->val1;
+		
+	// Eden Crystal Synthesis
+	if (sc->data[SC_QUEST_BUFF1])
+		batk += sc->data[SC_QUEST_BUFF1]->val1;
+	if (sc->data[SC_QUEST_BUFF2])
+		batk += sc->data[SC_QUEST_BUFF2]->val1;
+	if (sc->data[SC_QUEST_BUFF3])
+		batk += sc->data[SC_QUEST_BUFF3]->val1;
 
 	return (unsigned short)cap_value(batk,0,USHRT_MAX);
 }
@@ -4715,6 +4816,20 @@ unsigned short status_calc_matk(struct block_list *bl, struct status_change *sc,
 		matk += matk * sc->data[SC_MOONLIT_SERENADE]->val2/100;
 	if (sc->data[SC_MTF_MATK])
 		matk += matk * 25 / 100;
+	if (sc->data[SC_MYSTICSCROLL])
+		matk += matk * sc->data[SC_MYSTICSCROLL]->val1 / 100;
+		
+	// Eden Crystal Synthesis
+	if (sc->data[SC_QUEST_BUFF1])
+		matk += sc->data[SC_QUEST_BUFF1]->val1;
+	if (sc->data[SC_QUEST_BUFF2])
+		matk += sc->data[SC_QUEST_BUFF2]->val1;
+	if (sc->data[SC_QUEST_BUFF3])
+		matk += sc->data[SC_QUEST_BUFF3]->val1;
+		
+	// Geffen Magic Tournament
+	if (sc->data[SC_FENRIR_CARD])
+		matk += sc->data[SC_FENRIR_CARD]->val1;
 
 	return (unsigned short)cap_value(matk,0,USHRT_MAX);
 }
@@ -4731,6 +4846,8 @@ signed short status_calc_critical(struct block_list *bl, struct status_change *s
 
 	if (sc->data[SC_CRITICALPERCENT])
 		critical += sc->data[SC_CRITICALPERCENT]->val2;
+	if (sc->data[SC_FOOD_CRITICALSUCCESSVALUE])
+		critical += sc->data[SC_FOOD_CRITICALSUCCESSVALUE]->val1;
 	if (sc->data[SC_EXPLOSIONSPIRITS])
 		critical += sc->data[SC_EXPLOSIONSPIRITS]->val2;
 	if (sc->data[SC_FORTUNE])
@@ -4895,9 +5012,10 @@ signed short status_calc_flee(struct block_list *bl, struct status_change *sc, i
 		if(status_get_element(bl) == ELE_WATER) //water type
 			flee /= 2;
 	}
-
 	if( sc->data[SC_OVERED_BOOST] ) // should be final and unmodifiable by any means
 		flee = sc->data[SC_OVERED_BOOST]->val2;
+	if (sc->data[SC_ARMORSCROLL])
+		flee += sc->data[SC_ARMORSCROLL]->val2;
 
 	return (short)cap_value(flee,1,SHRT_MAX);
 }
@@ -4918,6 +5036,8 @@ signed short status_calc_flee2(struct block_list *bl, struct status_change *sc, 
 		flee2 += sc->data[SC_WHISTLE]->val3*10;
 	if(sc->data[SC__UNLUCKY])
 		flee2 -= flee2 * sc->data[SC__UNLUCKY]->val2 / 100;
+	if (sc->data[SC_FREYJASCROLL])
+		flee2 += sc->data[SC_FREYJASCROLL]->val2;
 
 	return (short)cap_value(flee2,10,SHRT_MAX);
 }
@@ -5017,6 +5137,8 @@ defType status_calc_def(struct block_list *bl, struct status_change *sc, int def
 	}
 	if (sc->data[SC_UNLIMIT])
 		return 1;
+	if (sc->data[SC_ARMORSCROLL])
+		def += sc->data[SC_ARMORSCROLL]->val1;
 
 	return (defType)cap_value(def,DEFTYPE_MIN,DEFTYPE_MAX);
 }
@@ -5145,6 +5267,8 @@ defType status_calc_mdef(struct block_list *bl, struct status_change *sc, int md
 		mdef -= mdef *25 / 100;
 	if (sc->data[SC_UNLIMIT])
 		return 1;
+	if (sc->data[SC_FREYJASCROLL])
+		mdef += sc->data[SC_FREYJASCROLL]->val1;
 
 	return (defType)cap_value(mdef,DEFTYPE_MIN,DEFTYPE_MAX);
 }
@@ -5290,7 +5414,9 @@ unsigned short status_calc_speed(struct block_list *bl, struct status_change *sc
 						val = max( val, sc->data[SC_POWER_OF_GAIA]->val2 );
 					if( sc->data[SC_MELON_BOMB] )
 						val = max( val, sc->data[SC_MELON_BOMB]->val1 );
-
+					if (sc->data[SC_STOMACHACHE])
+						val = max(val, 50);
+						
 					if( sc->data[SC_MARSHOFABYSS] ) // It stacks to other statuses so always put this at the end.
 						val = max( 50, val + 10 * sc->data[SC_MARSHOFABYSS]->val1 );
 
@@ -5493,6 +5619,8 @@ short status_calc_aspd(struct block_list *bl, struct status_change *sc, short fl
 			bonus += 3 * sc->data[SC_STAR_COMFORT]->val1;
 		if (sc->data[SC_ACARAJE])
 			bonus += sc->data[SC_ACARAJE]->val2;
+		if (sc->data[SC_BATTLESCROLL])
+			bonus += sc->data[SC_BATTLESCROLL]->val1;
 	}
 
 	return (bonus + pots);
@@ -5656,6 +5784,8 @@ short status_calc_aspd_rate(struct block_list *bl, struct status_change *sc, int
 		aspd_rate -= sc->data[SC_GOLDENE_FERSE]->val3 * 10;
 	if (sc->data[SC_ACARAJE])
 		aspd_rate += sc->data[SC_ACARAJE]->val2 * 10;
+	if (sc->data[SC_BATTLESCROLL])
+		aspd_rate += sc->data[SC_BATTLESCROLL]->val1 * 10;
 
 	return (short)cap_value(aspd_rate,0,SHRT_MAX);
 }
@@ -5701,10 +5831,8 @@ unsigned int status_calc_maxhp(struct block_list *bl, struct status_change *sc, 
 		maxhp += 3000;
 	if(sc->data[SC_EARTH_INSIGNIA] && sc->data[SC_EARTH_INSIGNIA]->val1 == 2)
 		maxhp += 500;
-
 	if(sc->data[SC_MER_HP])
 		maxhp += maxhp * sc->data[SC_MER_HP]->val2/100;
-
 	if(sc->data[SC_EPICLESIS])
 		maxhp += maxhp * 5 * sc->data[SC_EPICLESIS]->val1 / 100;
 	if(sc->data[SC_VENOMBLEED])
@@ -5741,6 +5869,10 @@ unsigned int status_calc_maxhp(struct block_list *bl, struct status_change *sc, 
 		maxhp += maxhp * sc->data[SC_GOLDENE_FERSE]->val2 / 100;
 	if(sc->data[SC_FRIGG_SONG])
 		maxhp += maxhp * sc->data[SC_FRIGG_SONG]->val2 / 100;
+	if (sc->data[SC_SOULSCROLL])
+		maxhp += maxhp * sc->data[SC_SOULSCROLL]->val1 / 100;
+	if (sc->data[SC_ATKER_ASPD])
+		maxhp += maxhp * sc->data[SC_ATKER_ASPD]->val1 / 100;
 
 	return (unsigned int)cap_value(maxhp,1,UINT_MAX);
 }
@@ -5768,6 +5900,12 @@ unsigned int status_calc_maxsp(struct block_list *bl, struct status_change *sc, 
 		maxsp += 50;
 	if (sc->data[SC_VITATA_500])
 		maxsp += maxsp * sc->data[SC_VITATA_500]->val2 / 100;
+	if (sc->data[SC_TARGET_ASPD])
+		maxsp += maxsp * sc->data[SC_TARGET_ASPD]->val1 / 100;
+	if (sc->data[SC_SOULSCROLL])
+		maxsp += maxsp * sc->data[SC_SOULSCROLL]->val1 / 100;
+	if (sc->data[SC_ATKER_MOVESPEED])
+		maxsp += maxsp * sc->data[SC_ATKER_MOVESPEED]->val1 / 100;
 
 	return cap_value(maxsp,1,UINT_MAX);
 }
